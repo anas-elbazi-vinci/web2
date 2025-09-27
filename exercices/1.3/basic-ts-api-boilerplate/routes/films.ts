@@ -1,7 +1,6 @@
 import { Router } from "express";
 
 import { Film, NewFilm } from "../types";
-import { isNumber } from "../utils/type-guards";
 
 const router = Router();
 
@@ -133,8 +132,7 @@ router.post("/" , (req , res) =>{
 
   const newFilm = film as NewFilm;
 
-  const nextId =
-    defaultFilms.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
+  const nextId = defaultFilms.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
 
   const addedFilm: Film = { id: nextId, ...newFilm };
 

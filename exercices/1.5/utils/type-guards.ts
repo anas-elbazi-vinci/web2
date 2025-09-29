@@ -1,10 +1,10 @@
-/** 
+/**
  * This file contains type guards for typescript
  * @param value
  * @returns
  */
 
-import { NewPizza } from "../types";
+//import { NewPizza } from "../types";
 
 /**
  * Check if the value is a string and inform typescript of this
@@ -25,7 +25,7 @@ const isNumber = (value: unknown): value is number => {
  * @param body
  * @returns boolean
  */
-const isNewPizza = (body: unknown): body is NewPizza => {
+/**const isNewPizza = (body: unknown): body is NewPizza => {
   if (
     !body ||
     typeof body !== "object" ||
@@ -40,6 +40,6 @@ const isNewPizza = (body: unknown): body is NewPizza => {
   }
 
   return true;
-};
+};**/
 
-export { isString, isNumber, isNewPizza };
+export { isString, isNumber};

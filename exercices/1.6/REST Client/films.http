@@ -1,0 +1,24 @@
+@baseUrl = http://localhost:3000
+### Read all drinks
+GET http://localhost:3000/films
+### Get by id
+GET http://localhost:3000/films/3
+###
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title": "Oompa",
+    "director": "Loompa",
+    "duration": 132,
+    "imageUrl":
+      "https://upload.wikimedia.org/wikipedia/en/7/74/Shang-Chi_and_the_Legend_of_the_Ten_Rings_poster.jpeg",
+    "description":
+      "Shang-Chi, the master of unarmed weaponry-based Kung Fu, is forced to confront his past after being drawn into the Ten Rings organization.",
+    "budget": 150
+  
+}
+###
+DELETE {{baseUrl}}/films/1
+###
+

@@ -1,5 +1,8 @@
 import { Router } from "express";
+import path from "node:path";
 import { Film, NewFilm } from "../types";
+import { parse} from "../utils/json";
+const jsonDbPath = path.join(__dirname, "/../data/drinks.json");
 
 const router = Router();
 
@@ -62,8 +65,9 @@ const defaultFilms: Film[] = [
 // Read all films
 
 router.get("/", ( req, res) => {
+  const films = parse(jsonDbPath,defaultFilms);
   if (req.query['minimum-duration'] === undefined) {
-    return res.send(defaultFilms);
+    return res.send(films);
   }
 
   const minDuration = Number(req.query['minimum-duration']);
@@ -73,18 +77,19 @@ router.get("/", ( req, res) => {
     return res.sendStatus(400);
   }
 
-  const filteredFilms = defaultFilms.filter((filteredFilms) => filteredFilms.duration >= minDuration);
+  const filteredFilms = films.filter((filteredFilms) => filteredFilms.duration >= minDuration);
   return res.send(filteredFilms);
 });
 
 router.get("/:id" , (req , res) =>{
   const id  = Number(req.params.id);
+  const films = parse(jsonDbPath,defaultFilms);
 
   if (isNaN(id)) {
     return res.sendStatus(400);
   }
 
-  const filmById = defaultFilms.find((filmById) => filmById.id === id);
+  const filmById = films.find((filmById) => filmById.id === id);
 
   if (filmById === undefined) {
     return res.sendStatus(404);
@@ -94,6 +99,7 @@ router.get("/:id" , (req , res) =>{
 
 router.post("/" , (req , res) =>{
   const film : unknown = req.body;
+  
 
   if (!film || 
     typeof film !== "object" ||
@@ -117,8 +123,9 @@ router.post("/" , (req , res) =>{
   }
 
   const newFilm = film as NewFilm;
+  const films = parse(jsonDbPath,defaultFilms);
 
-  const existingFilm = defaultFilms.find(
+  const existingFilm = films.find(
     (film) =>
       film.title.toLowerCase() === newFilm.title.toLowerCase() &&
       film.director.toLowerCase() === newFilm.director.toLowerCase()
@@ -128,34 +135,36 @@ router.post("/" , (req , res) =>{
     return res.sendStatus(409);
   }
 
-  const nextId = defaultFilms.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
+  const nextId = films.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
 
   const addedFilm: Film = { id: nextId, ...newFilm };
 
-  defaultFilms.push(addedFilm);
+  films.push(addedFilm);
 
   return res.json(addedFilm);
 });
 
 router.delete("/:id" , (req , res) => {
   const idFilm = Number(req.params.id);
+  const films = parse(jsonDbPath,defaultFilms);
   if (isNaN(idFilm)) {
     return res.sendStatus(400);
   }
 
-  const filmIndex = defaultFilms.findIndex((film) => film.id === idFilm);
+  const filmIndex = films.findIndex((film) => film.id === idFilm);
   if (filmIndex === -1) {
     return res.sendStatus(404);
   }
 
-  const filmDeleted = defaultFilms.splice(filmIndex,1);
+  const filmDeleted = films.splice(filmIndex,1);
   return res.json(filmDeleted[0]);
 
 });
 
 router.patch(":id" , (req , res) => {
   const idFilm = Number(req.params.id);
-  const film = defaultFilms.find((film) => film.id === idFilm);
+  const films = parse(jsonDbPath,defaultFilms);
+  const film = films.find((film) => film.id === idFilm);
   if (!film) {
       return res.sendStatus(404);
   }
@@ -206,12 +215,13 @@ router.patch(":id" , (req , res) => {
 
 router.put("/:id" , (req ,res) => {
   const idFilm = Number(req.params.id);
+  const films = parse(jsonDbPath,defaultFilms);
 
   if (isNaN(idFilm)) {
     return res.sendStatus(400);
   }
 
-  const film = defaultFilms.find((film) => film.id === idFilm);
+  const film = films.find((film) => film.id === idFilm);
   if (!film) {
     const film : unknown = req.body;
 
@@ -238,7 +248,7 @@ router.put("/:id" , (req ,res) => {
 
   const newFilm = film as NewFilm;
 
-  const existingFilm = defaultFilms.find(
+  const existingFilm = films.find(
     (film) =>
       film.title.toLowerCase() === newFilm.title.toLowerCase() &&
       film.director.toLowerCase() === newFilm.director.toLowerCase()
@@ -248,11 +258,11 @@ router.put("/:id" , (req ,res) => {
     return res.sendStatus(409);
   }
 
-  const nextId = defaultFilms.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
+  const nextId = films.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
 
   const addedFilm: Film = { id: nextId, ...newFilm };
 
-  defaultFilms.push(addedFilm);
+  films.push(addedFilm);
 
   return res.json(addedFilm);
   }else{

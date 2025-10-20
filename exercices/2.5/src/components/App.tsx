@@ -2,7 +2,6 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ClickCounter from './ClickCounter'
-import type { ClickCounterProps } from '../types'
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <ClickCounter titre="Titre"message="You are a master in the art of clicking !"/>
+        <ClickCounter titre="Titre"message10clics="You are a master in the art of clicking !"messageWhenOnCount="Please click on me now !"/>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

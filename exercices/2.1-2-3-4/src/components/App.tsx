@@ -1,3 +1,8 @@
+import Cinema from "./Cinema";
+import Footer from "./Footer";
+import Header from "./Header";
+import PageTitle from "./PageTitle";
+
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
 
@@ -46,48 +51,17 @@ const moviesCinema2 = [
   
   return (
     <div>
+      <Header urlLogo="https://media.istockphoto.com/id/1429764305/fr/vectoriel/bande-de-film-vierge-isol%C3%A9e-sur-le-fond-blanc.jpg?s=1024x1024&w=is&k=20&c=is5Y6cun0NC8PxJd51p4YnUoLUpyb758Bdigh4Bqn48=">
+        <h1>Tous sur les films</h1>
+      </Header>
       <PageTitle title={pageTitle} />
 
       <Cinema name={cinema1Name} movies= {moviesCinema1} />
 
       <Cinema name={cinema2Name} movies={moviesCinema2} />
-    </div>
-  );
-};
-
-
-interface Movie {
-  title: string;
-  director: string;
-}
-
-interface CinemaProps {
-  name: string;
-  movies : Movie[];
-}
-
-interface PageTitleProps {
-  title: string;
-}
-
-const PageTitle = (props: PageTitleProps) => {
-  return <h1>{props.title}</h1>;
-};
-
-const Cinema = (props: CinemaProps) => {
-  return (
-    <div>
-      <h2>{props.name}</h2>
-      <ul>
-        <li>
-          {props.movies.map((movie,index) => (
-          <tr key={index}>
-            <td>{movie.director}</td>
-            <td>{movie.title}</td>
-          </tr>
-        ))}
-        </li>
-      </ul>
+      <Footer urlLogo="https://media.istockphoto.com/id/1202770152/fr/photo/bobine-de-film-disolement-sur-le-fond-jaune-lumineux-dans-les-couleurs-pastel.jpg?s=1024x1024&w=is&k=20&c=2yKBrC8oyimPdW-5IxFWN_zxFPVK3KWYL9OE2gVmVX4=">
+        <p>© 2021 UGC Cinémas</p>
+      </Footer>
     </div>
   );
 };

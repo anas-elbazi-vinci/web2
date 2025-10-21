@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ClickCounterProps } from "../types";
+import type { ClickCounterProps } from "../types";
 
 const ClickCounter = ({titre,message10clics,messageWhenOnCount} : ClickCounterProps) =>{
     const [count, setCount] = useState(0);

@@ -4,7 +4,7 @@ import FilmList from "./filmList";
 import type { Film } from "../types";
 
 function App (){
-    const mesFilmsPref = [
+    const mesFilmsPref : Film[] = [
   {
     title: "Inception",
     director: "Christopher Nolan",

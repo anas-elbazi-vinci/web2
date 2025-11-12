@@ -28,7 +28,7 @@ const AddFilm = ({addedFilm} : addFilmProps) =>{
         <form onSubmit={handleSubmit} >
             <div>
                 <label htmlFor="title">Titre</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+                <input  type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
             </div>
             <div>
                 <label htmlFor="director">Directeur</label>

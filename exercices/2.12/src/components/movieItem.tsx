@@ -1,8 +1,8 @@
 import { useState } from "react";
-import type { Movie } from "../types";
+import type { Film} from "../types";
 
 
-const MovieItem = (props : Movie) => {
+const MovieItem = (props : Film) => {
     const [isClicked , setIsClicked] = useState(false);
 
     return (

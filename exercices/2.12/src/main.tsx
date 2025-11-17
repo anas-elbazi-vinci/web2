@@ -7,6 +7,7 @@ import CinemaPage from './components/Page/CinemaPage'
 import MovieListPage from './components/Page/MovieListPage'
 import App from './components/app'
 import AddFilmPage from './components/Page/AddFilmPage'
+import MoviePage from './components/Page/MoviePage'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     {
       path:"/addFilm",
       element:<AddFilmPage/>
+    },
+    {
+      path:"/movie/:id",
+      element:<MoviePage/>
     }
       ]
     }

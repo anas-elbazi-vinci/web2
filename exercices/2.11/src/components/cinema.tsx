@@ -1,10 +1,10 @@
 
-import type { Movie } from "../types";
+import type { Film} from "../types";
 import MovieItem from "./movieItem";
 
 interface CinemaProps {
   name: string;
-  movies : Movie[];
+  movies : Film[];
 }
 
 const Cinema = (props: CinemaProps) => {
@@ -14,7 +14,7 @@ const Cinema = (props: CinemaProps) => {
       <ul>
         <li>
           {props.movies.map((movie) => (
-          <MovieItem title={movie.title} director={movie.director} description={movie.description}/>
+          <MovieItem title={movie.title} director={movie.director} dureeMinute={movie.dureeMinute}/>
         ))}
         </li>
       </ul>

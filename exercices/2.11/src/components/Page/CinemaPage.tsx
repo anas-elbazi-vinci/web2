@@ -64,7 +64,7 @@ const CinemaPage = () => {
         "An epic crime drama that chronicles the life of Frank Sheeran, a mob hitman, as he reflects on his involvement with the Bufalino crime family and the mysterious disappearance of his friend, Jimmy Hoffa.",
     },
   ];
-  //... the following does not change
+
 
   
   return (

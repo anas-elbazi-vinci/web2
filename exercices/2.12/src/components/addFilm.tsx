@@ -1,12 +1,14 @@
 import { useState, type SyntheticEvent } from "react";
-import type { Film } from "../types"
-import { useNavigate } from "react-router-dom";
+import type { Film, FilmContext } from "../types"
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 interface addFilmProps{
     addedFilm : (film : Film) => void;
 }
 
 const AddFilm = ({addedFilm} : addFilmProps) =>{
+    const {movies}  : FilmContext= useOutletContext();
+    const id = movies.length+1;
     const navigate = useNavigate();
     const [title , setTitle] = useState("");
     const [director , setDirector] = useState("");
@@ -16,7 +18,7 @@ const AddFilm = ({addedFilm} : addFilmProps) =>{
     const [budget,setBudget] = useState(0);
     const handleSubmit = (e :SyntheticEvent) =>{
         e.preventDefault();
-        addedFilm({title,director,dureeMinute,linkImage,description,budget});
+        addedFilm({id,title,director,dureeMinute,linkImage,description,budget});
         setTitle("");
         setDirector("");
         setDureeMinute(0);

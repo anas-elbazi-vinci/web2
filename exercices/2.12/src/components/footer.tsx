@@ -1,17 +1,12 @@
-interface FooterProps{
-    urlLogo : string;
-    children : React.ReactNode;
-}
+interface FooterProps { urlLogo: string; children: React.ReactNode; }
 
-const Footer = (props : FooterProps)=>{
+const Footer = (props: FooterProps) => {
     return (
-        <div>
-            <img src={props.urlLogo} alt="logo" />
-            <div>
-                {props.children}
-            </div>
-        </div>
-    )
-}
+        <footer className="site-footer row">
+            <img className="logo-small" src={props.urlLogo} alt="logo" />
+            <div className="footer-content">{props.children}</div>
+        </footer>
+    );
+};
 
 export default Footer;

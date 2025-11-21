@@ -1,17 +1,12 @@
-interface HeaderProps{
-    urlLogo : string;
-    children : React.ReactNode;
-}
+interface HeaderProps { urlLogo: string; children?: React.ReactNode; }
 
-const Header = (props : HeaderProps) =>{
+const Header = (props: HeaderProps) => {
     return (
-        <div>
-            <img src={props.urlLogo} alt="logo" />
-            <div>
-                {props.children}
-            </div>
+        <div className="site-header">
+            <img className="logo" src={props.urlLogo} alt="logo" />
+            <div className="header-content">{props.children}</div>
         </div>
-    )
-}
+    );
+};
 
 export default Header;

@@ -65,10 +65,10 @@ const App = () => {
     }
 
     return(
-        <div>
-            <NavBar/>
-            <Outlet context={fullFilmContext}/>
-        </div>
+      <div className="app-container stack">
+        <NavBar/>
+        <Outlet context={fullFilmContext}/>
+      </div>
     )
 }
 

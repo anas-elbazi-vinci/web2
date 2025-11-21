@@ -1,0 +1,49 @@
+/* Minimal CSS enhancement for existing 2.14b structure (no JSX changes) */
+:root{
+  --bg:#0e1623;
+  --bg-alt:#1b2735;
+  --text:#e6eef6;
+  --muted:#8fa1b5;
+  --accent:#4f8bff;
+  --accent-glow:rgba(79,139,255,.35);
+  --radius:16px;
+  --gap:22px;
+  --shadow:0 8px 28px -6px rgba(0,0,0,.55);
+  font-family:Inter,system-ui,sans-serif;
+  color-scheme:dark;
+}
+html,body,#root{height:100%}
+body{margin:0;background:radial-gradient(circle at 30% 20%,#182738,#0e1623 60%);color:var(--text);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+
+/* Layout inference: first wrapper div (button), second wrapper div (gallery) */
+#root > div{max-width:1200px;margin:0 auto;padding:34px 34px 54px;display:flex;flex-direction:column;gap:28px}
+#root > div > div:first-child{display:flex;justify-content:center}
+#root > div > div:first-child button{background:linear-gradient(90deg,var(--accent),#7dc9ff);color:#06192d;font-weight:600;padding:14px 28px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 0 0 0 var(--accent-glow),0 4px 18px -4px var(--accent-glow);transition:.4s}
+#root > div > div:first-child button:hover{box-shadow:0 0 0 6px var(--accent-glow),0 6px 24px -6px var(--accent-glow);transform:translateY(-2px)}
+#root > div > div:first-child button:active{transform:translateY(0)}
+
+/* Gallery grid using second child */
+#root > div > div:last-child{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--gap)}
+
+/* Card styling for each RandomDog wrapper div */
+#root > div > div:last-child > div{background:linear-gradient(180deg,var(--bg-alt),rgba(27,39,53,0.7));border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);position:relative;isolation:isolate;overflow:hidden}
+#root > div > div:last-child > div::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.08),transparent 60%);opacity:.55}
+#root > div > div:last-child > div:hover{border-color:rgba(255,255,255,0.18)}
+
+/* Dog images */
+#root > div > div:last-child img{width:100%;height:230px;object-fit:cover;border-radius:12px;box-shadow:0 4px 18px -4px rgba(0,0,0,.55);display:block;transition:.6s}
+#root > div > div:last-child > div:hover img{filter:brightness(1.07) saturate(1.1)}
+
+/* Loading text styling */
+p{margin:0;font-weight:500;color:var(--muted);letter-spacing:.5px}
+p::after{content:" ⏳"}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:14px}
+::-webkit-scrollbar-track{background:#101c29}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),#7dc9ff);border-radius:20px;border:3px solid #101c29}
+
+@media (max-width:600px){#root > div{padding:26px 20px}#root > div > div:first-child button{width:100%}}
+@media (prefers-color-scheme: light){:root{--bg:#f6fafe;--bg-alt:#ffffff;--text:#142635;--muted:#5a6d7f;--accent:#2563eb;--accent-glow:rgba(37,99,235,.35)}body{background:linear-gradient(130deg,#ffffff,#d9ecff)}#root > div > div:last-child > div{border-color:rgba(0,0,0,.06);box-shadow:0 8px 28px -6px rgba(0,0,0,.12)}p{color:#4b5d6f}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}

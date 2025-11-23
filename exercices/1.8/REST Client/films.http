@@ -1,8 +1,8 @@
 @baseUrl = http://localhost:3000
 ### Read all drinks
-GET http://localhost:3000/films
+GET {{baseUrl}}/films
 ### Get by id
-GET http://localhost:3000/films/3
+GET {{baseUrl}}/films/3
 ###
 POST {{baseUrl}}/films
 Content-Type: application/json

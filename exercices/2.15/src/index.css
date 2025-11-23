@@ -1,0 +1,152 @@
+/* Modern, responsive and accessible base stylesheet tailored for exercices/2.12 */
+
+:root{
+  --bg: #0f1724; /* dark slate */
+  --card: #111827;
+  --muted: #9aa4b2;
+  --text: #e6eef6;
+  --accent: #6c8cff;
+  --accent-2: #7dd3fc;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 10px;
+  --gap: 16px;
+  --container-max: 1100px;
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset & sensible defaults */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg) 0%, #071024 100%);
+  color:var(--text);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-width:320px;
+}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Layout container */
+.app-container{
+  max-width:var(--container-max);
+  margin:32px auto;
+  padding:24px;
+}
+
+/* Header */
+.site-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+.site-title{
+  font-size:1.6rem;
+  margin:0;
+  font-weight:600;
+}
+.site-sub{
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* Main layout */
+.layout{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap:24px;
+  align-items:start;
+}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+
+/* Movie grid */
+.movie-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+}
+.movie-card{
+  background:linear-gradient(180deg,var(--card), rgba(17,24,39,0.9));
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.movie-poster{
+  width:100%;
+  height:140px;
+  background:#0b1220;
+  border-radius:8px;
+  object-fit:cover;
+}
+.movie-title{
+  font-size:1.05rem;
+  font-weight:700;
+  margin:0;
+}
+.movie-meta{
+  color:var(--muted);
+  font-size:0.9rem;
+}
+.movie-actions{display:flex;gap:8px;margin-top:auto}
+
+/* Form styles (add film) */
+.film-form{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:16px;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+label{font-size:0.9rem;color:var(--muted)}
+input[type="text"],textarea,select{
+  padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);
+}
+textarea{min-height:80px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:8px 12px;border:1px solid transparent;cursor:pointer;font-weight:600}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04263a;border-color:transparent}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,0.06);color:var(--text)}
+.btn-danger{background:var(--danger);color:white}
+.btn:focus{outline:3px solid rgba(100,108,255,0.16);outline-offset:2px}
+
+/* Sidebar small helpers */
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.muted{color:var(--muted)}
+
+/* Empty state */
+.empty{
+  text-align:center;padding:40px;border-radius:12px;background:rgba(255,255,255,0.02);color:var(--muted)
+}
+
+/* Utilities */
+.stack{display:flex;flex-direction:column;gap:var(--gap)}
+.row{display:flex;align-items:center;gap:12px}
+.spacer{flex:1}
+
+/* Light theme support */
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f6fbff; --card:#ffffff; --muted:#637183; --text:#0b2233; --accent:#3456f7; --accent-2:#3dd5ff }
+  body{background:linear-gradient(180deg,var(--bg),#eaf6ff)}
+  .movie-card{box-shadow:0 6px 18px rgba(9,30,60,0.06)}
+}
+
+/* Small helpers for typography */
+h1,h2,h3{margin:0}
+h1{font-size:1.8rem}
+h2{font-size:1.2rem}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+

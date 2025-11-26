@@ -8,7 +8,7 @@ POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
-    "title": "Oompa",
+    "title": "Oomp",
     "director": "Loompa",
     "duration": 132,
     "imageUrl":

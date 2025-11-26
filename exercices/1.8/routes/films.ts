@@ -60,7 +60,7 @@ router.post("/" , (req , res) =>{
     !film.director.trim() ||
     film.duration <= 0 ||
     ("budget" in film &&
-      (typeof film.budget !== "number" || film.budget <= 0)) ||
+      (typeof film.budget !== "number" || film.budget < 0)) ||
     ("description" in film &&
       (typeof film.description !== "string" || !film.description.trim())) ||
     ("imageUrl" in film &&

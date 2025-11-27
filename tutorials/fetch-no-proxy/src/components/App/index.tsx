@@ -6,7 +6,6 @@ import Header from "../Header";
 import { Drink, NewPizza, Pizza, PizzeriaContext } from "../../types";
 import NavBar from "../Navbar";
 
-
 const drinks: Drink[] = [
   {
     title: "Coca-Cola",
@@ -63,7 +62,6 @@ const App = () => {
     setActionToBePerformed(false);
   };
 
-  // TODO : pass the state and functions to the children components
   const fullPizzaContext: PizzeriaContext = {
     addPizza,
     pizzas,
@@ -82,8 +80,8 @@ const App = () => {
         handleHeaderClick={handleHeaderClick}
       />
       <main>
-      <NavBar />
-        <Outlet context={fullPizzaContext}/>
+        <NavBar />
+        <Outlet context={fullPizzaContext} />
       </main>
       <Footer />
     </div>

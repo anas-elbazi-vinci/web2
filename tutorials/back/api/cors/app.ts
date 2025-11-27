@@ -1,10 +1,18 @@
 import express, { ErrorRequestHandler } from "express";
+import cors from "cors";
 
 import usersRouter from "./routes/users";
 import pizzaRouter from "./routes/pizzas";
 import drinkRouter from "./routes/drinks";
+import authsRouter from "./routes/"
 
 const app = express();
+
+const corsOptions = {
+  origin: [/^http:\/\/localhost/, "http://amazing.you.com"],
+};
+
+app.use(cors(corsOptions));
 
 app.use((_req, _res, next) => {
   console.log(
@@ -20,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/users", usersRouter);
 app.use("/pizzas", pizzaRouter);
 app.use("/drinks", drinkRouter);
+app.use("/auths",)
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   console.error(err.stack);

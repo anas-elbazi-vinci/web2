@@ -24,4 +24,3 @@ interface PizzeriaContext {
 }
 
 export type { Pizza, NewPizza, Drink, PizzeriaContext };
-

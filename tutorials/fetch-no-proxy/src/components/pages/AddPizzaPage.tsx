@@ -4,8 +4,8 @@ import "./AddPizzaPage.css";
 import { PizzeriaContext } from "../../types";
 
 const AddPizzaPage = () => {
-  // TODO : Get the addPizza function
   const { addPizza }: PizzeriaContext = useOutletContext();
+
   const navigate = useNavigate();
   const [pizza, setPizza] = useState("");
   const [description, setDescription] = useState("");
